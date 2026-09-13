@@ -23,17 +23,20 @@
         /* Topo */
         .navbar {
             background-color: #1b2126;
-            padding: 15px 20px;
+            padding: 10px 20px;
             border-bottom: 1px solid #2f3841;
             position: sticky;
             top: 0;
             z-index: 100;
+            display: flex;
+            align-items: center;
         }
 
-        .logo {
-            color: #00aff0;
-            font-size: 1.5rem;
-            font-weight: bold;
+        /* Imagem do Canto Superior Esquerdo */
+        .brand-logo {
+            height: 35px;
+            width: auto;
+            object-fit: contain;
         }
 
         /* Perfil */
@@ -100,6 +103,7 @@
             color: #8a96a3;
         }
 
+        /* Botão estático sem função de clique */
         .btn-subscribe {
             width: 100%;
             background-color: #00aff0;
@@ -108,13 +112,8 @@
             padding: 12px;
             border-radius: 25px;
             font-weight: bold;
-            cursor: pointer;
             font-size: 1rem;
-            transition: 0.2s;
-        }
-
-        .btn-subscribe:hover {
-            background-color: #0084b4;
+            cursor: default;
         }
 
         /* Grid */
@@ -163,7 +162,7 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            filter: blur(25px); /* Foto desfocada permanentemente */
+            filter: blur(25px); /* Conteúdo desfocado */
         }
 
         .lock-overlay {
@@ -196,16 +195,16 @@
 </head>
 <body>
 
-    <!-- Header -->
+    <!-- Header com a sua imagem png no topo esquerdo -->
     <header class="navbar">
-        <div class="logo"><i class="fa-solid fa-star"></i> PopFans</div>
+        <img src="IMG_SEGMENT_20260913_172801.png" alt="Logo" class="brand-logo">
     </header>
 
     <!-- Perfil -->
     <section class="profile-container">
         <div class="banner"></div>
         <div class="profile-header">
-            <!-- Puxa a imagem enviada por você -->
+            <!-- Sua foto de perfil -->
             <img src="IMG_20260913_171018.jpg" alt="feliperei" class="avatar">
             
             <div class="user-details">
@@ -213,7 +212,7 @@
                 <p class="username">@feliperei</p>
             </div>
 
-            <!-- Stats fixos: 10 fotos, 5 vídeos, 300 curtidas -->
+            <!-- Stats fixos -->
             <div class="stats-bar">
                 <div class="stat">
                     <strong>10</strong>
@@ -224,12 +223,13 @@
                     <span>Vídeos</span>
                 </div>
                 <div class="stat">
-                    <strong id="like-count">300</strong>
+                    <strong>300</strong>
                     <span>Curtidas</span>
                 </div>
             </div>
 
-            <button class="btn-subscribe" onclick="addLike()">
+            <!-- Botão estático (sem onclick) -->
+            <button class="btn-subscribe">
                 <i class="fa-solid fa-heart"></i> CURTIR PERFIL
             </button>
         </div>
@@ -261,8 +261,6 @@
             }))
         ];
 
-        let likes = 300;
-
         function renderPosts(filter = 'all') {
             const grid = document.getElementById('postsGrid');
             grid.innerHTML = '';
@@ -288,11 +286,6 @@
             document.querySelectorAll('.tab').forEach(btn => btn.classList.remove('active'));
             event.target.classList.add('active');
             renderPosts(type);
-        }
-
-        function addLike() {
-            likes++;
-            document.getElementById('like-count').innerText = likes;
         }
 
         renderPosts();
