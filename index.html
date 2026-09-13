@@ -3,11 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PopFans | Seu Nome</title>
-    <!-- Ícones via FontAwesome -->
+    <title>PopFans | feliperei</title>
+    <!-- Ícones FontAwesome -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/js/all.min.js"></script>
     
-    <!-- ESTILOS (CSS) -->
     <style>
         * {
             margin: 0;
@@ -21,7 +20,7 @@
             color: #ffffff;
         }
 
-        /* Topo / Marca */
+        /* Topo */
         .navbar {
             background-color: #1b2126;
             padding: 15px 20px;
@@ -118,7 +117,7 @@
             background-color: #0084b4;
         }
 
-        /* Grid de Conteúdo */
+        /* Grid */
         .feed-container {
             max-width: 700px;
             margin: 20px auto;
@@ -158,19 +157,13 @@
             border-radius: 8px;
             overflow: hidden;
             height: 250px;
-            cursor: pointer;
         }
 
         .post-media {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            filter: blur(15px); /* Efeito de desfocado */
-            transition: filter 0.3s ease;
-        }
-
-        .post-card.unlocked .post-media {
-            filter: blur(0px); /* Revela a imagem ao clicar */
+            filter: blur(25px); /* Foto desfocada permanentemente */
         }
 
         .lock-overlay {
@@ -183,17 +176,21 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            background: rgba(0, 0, 0, 0.4);
+            background: rgba(0, 0, 0, 0.6);
             color: #fff;
-        }
-
-        .post-card.unlocked .lock-overlay {
-            display: none;
+            text-align: center;
+            padding: 10px;
         }
 
         .lock-overlay i {
-            font-size: 2rem;
-            margin-bottom: 5px;
+            font-size: 1.8rem;
+            margin-bottom: 8px;
+            color: #00aff0;
+        }
+
+        .lock-overlay span {
+            font-size: 0.85rem;
+            font-weight: bold;
         }
     </style>
 </head>
@@ -208,15 +205,15 @@
     <section class="profile-container">
         <div class="banner"></div>
         <div class="profile-header">
-            <!-- Substitua o link da foto abaixo pela sua foto -->
-            <img src="https://via.placeholder.com/150" alt="Sua Foto" class="avatar">
+            <!-- Puxa a imagem enviada por você -->
+            <img src="IMG_20260913_171018.jpg" alt="feliperei" class="avatar">
             
             <div class="user-details">
-                <h2>Seu Nome <i class="fa-solid fa-circle-check badge"></i></h2>
-                <p class="username">@seunome</p>
+                <h2>feliperei <i class="fa-solid fa-circle-check badge"></i></h2>
+                <p class="username">@feliperei</p>
             </div>
 
-            <!-- Estatísticas -->
+            <!-- Stats fixos: 10 fotos, 5 vídeos, 300 curtidas -->
             <div class="stats-bar">
                 <div class="stat">
                     <strong>10</strong>
@@ -238,7 +235,7 @@
         </div>
     </section>
 
-    <!-- Feed de Fotos/Vídeos -->
+    <!-- Feed -->
     <main class="feed-container">
         <div class="tabs">
             <button class="tab active" onclick="filterContent(event, 'all')">Tudo</button>
@@ -249,9 +246,8 @@
         <div class="posts-grid" id="postsGrid"></div>
     </main>
 
-    <!-- LÓGICA (JavaScript) -->
     <script>
-        // Dados simulando 10 Fotos e 5 Vídeos
+        // Array com 10 fotos e 5 vídeos bloqueados
         const postsData = [
             ...Array.from({ length: 10 }, (_, i) => ({
                 id: i + 1,
@@ -276,13 +272,12 @@
             filtered.forEach(post => {
                 const card = document.createElement('div');
                 card.className = 'post-card';
-                card.onclick = () => card.classList.toggle('unlocked');
 
                 card.innerHTML = `
-                    <img class="post-media" src="${post.mediaSrc}" alt="Conteúdo">
+                    <img class="post-media" src="${post.mediaSrc}" alt="Conteúdo Bloqueado">
                     <div class="lock-overlay">
                         <i class="fa-solid fa-lock"></i>
-                        <span>Clique para ver</span>
+                        <span>Conteúdo Exclusivo</span>
                     </div>
                 `;
                 grid.appendChild(card);
@@ -300,7 +295,6 @@
             document.getElementById('like-count').innerText = likes;
         }
 
-        // Renderiza as fotos ao carregar
         renderPosts();
     </script>
 </body>
