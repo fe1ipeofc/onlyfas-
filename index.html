@@ -30,13 +30,20 @@
             z-index: 100;
             display: flex;
             align-items: center;
+            gap: 12px;
         }
 
-        /* Imagem do Canto Superior Esquerdo */
+        /* Imagem e Texto do Canto Superior Esquerdo */
         .brand-logo {
-            height: 35px;
+            height: 48px; /* Imagem aumentada */
             width: auto;
             object-fit: contain;
+        }
+
+        .logo-text {
+            color: #00aff0;
+            font-size: 1.5rem;
+            font-weight: bold;
         }
 
         /* Perfil */
@@ -103,7 +110,7 @@
             color: #8a96a3;
         }
 
-        /* Botão estático sem função de clique */
+        /* Botão estático apenas com o texto CURTIR (sem ícone de coração) */
         .btn-subscribe {
             width: 100%;
             background-color: #00aff0;
@@ -195,9 +202,10 @@
 </head>
 <body>
 
-    <!-- Header com a sua imagem png no topo esquerdo -->
+    <!-- Header com Imagem maior + Nome PopFans -->
     <header class="navbar">
         <img src="IMG_SEGMENT_20260913_172801.png" alt="Logo" class="brand-logo">
+        <span class="logo-text">PopFans</span>
     </header>
 
     <!-- Perfil -->
@@ -228,9 +236,9 @@
                 </div>
             </div>
 
-            <!-- Botão estático (sem onclick) -->
+            <!-- Botão estático sem ícone, apenas com o texto CURTIR -->
             <button class="btn-subscribe">
-                <i class="fa-solid fa-heart"></i> CURTIR PERFIL
+                CURTIR
             </button>
         </div>
     </section>
