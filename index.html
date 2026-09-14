@@ -33,13 +33,14 @@
             gap: 12px;
         }
 
-        /* Imagem e Texto do Canto Superior Esquerdo */
+        /* Imagem Aumentada no Canto Superior Esquerdo */
         .brand-logo {
-            height: 48px; /* Imagem aumentada */
+            height: 48px;
             width: auto;
             object-fit: contain;
         }
 
+        /* Nome PopFans ao lado da imagem */
         .logo-text {
             color: #00aff0;
             font-size: 1.5rem;
@@ -110,7 +111,13 @@
             color: #8a96a3;
         }
 
-        /* Botão estático apenas com o texto Assinar por R$5/mês (sem ícone de coração) */
+        /* Estilo do Botão e Link */
+        .btn-link {
+            text-decoration: none;
+            display: block;
+            width: 100%;
+        }
+
         .btn-subscribe {
             width: 100%;
             background-color: #00aff0;
@@ -120,7 +127,12 @@
             border-radius: 25px;
             font-weight: bold;
             font-size: 1rem;
-            cursor: default;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        .btn-subscribe:hover {
+            background-color: #0084b4;
         }
 
         /* Grid */
@@ -169,7 +181,7 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            filter: blur(25px); /* Conteúdo desfocado */
+            filter: blur(25px); /* Fotos bloqueadas */
         }
 
         .lock-overlay {
@@ -202,10 +214,10 @@
 </head>
 <body>
 
-    <!-- Header com Imagem maior + Nome PopFans -->
+    <!-- Header com a imagem maior + nome PopFans -->
     <header class="navbar">
         <img src="IMG_SEGMENT_20260913_172801.png" alt="Logo" class="brand-logo">
-        <span class="logo-text">Onlyfas</span>
+        <span class="logo-text">PopFans</span>
     </header>
 
     <!-- Perfil -->
@@ -236,10 +248,12 @@
                 </div>
             </div>
 
-            <!-- Botão estático sem ícone, apenas com o texto ASSINAR POR 5R$ -->
-            <button class="btn-subscribe">
-                Assinar por R$5/mês
-            </button>
+            <!-- Botão SEGUIR redirecionando para o Instagram -->
+            <a href="https://link.infinitepay.io/fe1ipeofc/VC01-AE8x0yjr5x-5,00" target="_blank" class="btn-link">
+                <button class="btn-subscribe">
+                    Assinar por R$5/mês
+                </button>
+            </a>
         </div>
     </section>
 
